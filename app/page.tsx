@@ -26,13 +26,13 @@ export default function Home() {
         />
         <div className="col-start-2 col-end-5 justify-center bg-slate-900 rounded-full border-x-4 border-slate-700 px-12 py-9 m-5">
           <h2 className="text-center text-2xl mb-4 ">Software Engineer</h2>
-          <p className="flex-shrink w-auto text-justify mb-4">
+          <p className="flex-shrink w-auto mb-4">
             I am a full-time Christian, Dad, and Problem Solver. I am also a
             Software Engineer with experience in full-stack development, client
             communication, web design, the fundamentals of machine learning, and
             asking insightful questions.
           </p>
-          <p className="flex-shrink w-auto text-justify mb-12">
+          <p className="flex-shrink w-auto mb-12">
             I am passionate about acquiring deep knowledge in full-stack
             engineering, UI/UX design, machine learning, and software
             architecture.
