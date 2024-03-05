@@ -16,16 +16,6 @@ const CollapsibleRow: React.FC<CollapsibleRowProps> = ({ title, children }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleMouseOver = () => {
-    timeoutRef.current = setTimeout(() => setIsOpen(true), 1000);
-  };
-
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  };
-
   useEffect(() => {
     const documentClick = (event: MouseEvent) => {
       if (!isOpen || (event.target as Element)?.closest(".collapsible-row"))
@@ -45,8 +35,6 @@ const CollapsibleRow: React.FC<CollapsibleRowProps> = ({ title, children }) => {
           isOpen ? "bg-gray-800" : ""
         }`}
         onClick={handleClick}
-        onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
       >
         {title}
       </div>
