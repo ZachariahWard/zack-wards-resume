@@ -26,6 +26,16 @@ export default function Home() {
         />
         <div className="col-start-2 col-end-5 justify-center bg-slate-900 rounded-full border-x-4 border-slate-700 px-12 py-9 m-5">
           <h2 className="text-center text-2xl mb-4 ">Software Engineer</h2>
+          <h3 className="text-center flex flex-row justify-around text-xl mb-4 px-12">
+            <div className="hover:text-slate-400">
+              <a href="tel:5097236395">Cell: (509) 723-6395</a>
+            </div>
+            <div className="hover:text-slate-400">
+              <a href="mailto:ZackWard.cs@gmail.com">
+                Email: ZackWard.cs@gmail.com
+              </a>
+            </div>
+          </h3>
           <p className="flex-shrink w-auto mb-4">
             I am a full-time Christian, Dad, and Problem Solver. I am also a
             Software Engineer with experience in full-stack development, client
