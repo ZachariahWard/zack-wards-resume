@@ -6,13 +6,13 @@ import "./globals.css";
 
 export default function Home() {
   return (
-    <main className="grid grid-cols-6 bg-black text-white min-h-screen">
-      <div className="col-1 grid grid-cols-12 bg-slate-900 rounded-full mr-20 border-r-4 border-slate-700">
-        <div className="bg-slate-900 h-full col-span-6">
+    <main className="grid grid-cols-12 bg-black text-white min-h-screen">
+      <div className="order-2 md:order-1 grid grid-cols-12 col-start-1 md:col-end-3 col-end-11 bg-slate-900 rounded-full mr-20 border-r-4 border-slate-700">
+        <div className="bg-slate-900 flex-initial h-full col-span-5 -mr-16 pl-4">
           <ListItems />
         </div>{" "}
       </div>
-      <div className="col-start-2 col-end-5 justify-center">
+      <div className="order-1 md:order-2 md:col-start-4 md:col-end-9 col-span-full justify-center">
         <h1 className="text-center text-6xl font-bold text-blue-400 py-4">
           Zack Ward
         </h1>

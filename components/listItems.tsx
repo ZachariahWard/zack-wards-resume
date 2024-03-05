@@ -76,26 +76,6 @@ function ListItem(item: IItemData, level = 0) {
   );
 }
 
-// function DescriptionItem(description: IDescription) {
-//   return (
-//     <div key={description.text}>
-//       <h1>{description.title}</h1>
-//       <p>{description.text}</p>
-//       {description.links?.map((link) => LinkItem(link))}
-//     </div>
-//   );
-// }
-
-// function LinkItem(link: ILink) {
-//   return (
-//     <a className="text-cyan-400" href={link.url} key={link.url}>
-//       <IconBase>{link.icon}</IconBase>
-//       {link.text}
-//     </a>
-//   );
-// }
-
-//chatgpt
 function DescriptionItem(description: IDescription) {
   const generateLinks = (text: string) => {
     // Regular expression to find the pattern "LINK[index]"
@@ -208,17 +188,17 @@ export function LinkList(): Array<ILink> {
     {
       text: "SudoSort",
       icon: "<FaGithub />",
-      url: "",
+      url: "https://github.com/ZachariahWard/SudoSortedArray",
     },
     {
       text: "Resume Website",
       icon: "<FaGithub />",
-      url: "",
+      url: "https://github.com/ZachariahWard/zack-wards-resume",
     },
     {
       text: "Recipe Manager",
       icon: "<FaGithub />",
-      url: "",
+      url: "https://github.com/ZachariahWard/Recipe-Manager",
     },
   ];
 }
