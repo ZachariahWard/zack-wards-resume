@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .scrollbar-dark {
+    scrollbar-width: thin;
+    scrollbar-color: #4a5568 #2d3748;
+  }
+}
