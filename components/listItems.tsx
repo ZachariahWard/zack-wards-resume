@@ -50,15 +50,55 @@ export interface IItemData {
   frequency?: number;
 }
 
-export default function ListItems() {
-  const skillList = SkillList();
-  return (
-    <div>
-      <h1 className="text-center text-3xl p-2">Skills</h1>
-      {skillList.map((item) => ListItem(item))}
-    </div>
-  );
+export enum ListType {
+  Skills,
+  Projects,
+  Education,
+  Jobs,
 }
+
+interface ListItemsProps {
+  listType: ListType;
+}
+
+const ListItems: React.FC<ListItemsProps> = ({ listType }): React.ReactNode => {
+  const skillList = SkillList();
+  const projectList = ProjectList();
+  const educationList = EducationList();
+  const jobList = JobList();
+  switch (listType) {
+    case ListType.Skills:
+      return (
+        <div>
+          <h1 className="text-center text-3xl p-2">Skills</h1>
+          {skillList.map((item) => ListItem(item))}
+        </div>
+      );
+    case ListType.Education:
+      return (
+        <div>
+          <h1 className="text-center text-3xl p-2">Education</h1>
+          {educationList.map((item) => ListItem(item))}
+        </div>
+      );
+    case ListType.Jobs:
+      return (
+        <div>
+          <h1 className="text-center text-3xl p-2">Jobs</h1>
+          {jobList.map((item) => ListItem(item))}
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <h1 className="text-center text-3xl p-2">Projects</h1>
+          {projectList.map((item) => ListItem(item))}
+        </div>
+      );
+  }
+};
+
+export default ListItems;
 
 function ListItem(item: IItemData, level = 0) {
   return (

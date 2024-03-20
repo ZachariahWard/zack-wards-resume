@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import profilePic from "@/public/smallProPic.jpg";
-import ListItems from "@/components/listItems";
+import ListItems, { ListType } from "@/components/listItems";
 import "./globals.css";
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
     <main className="grid grid-cols-12 bg-black text-white min-h-screen">
       <div className="order-2 lg:order-1 grid grid-cols-12 col-start-1 lg:col-end-4 col-end-11 bg-slate-900 rounded-full mr-20 border-r-4 border-slate-700">
         <div className="bg-slate-900 flex-initial h-full lg:col-span-4 col-span-4 -mr-16 pl-4 py-2">
-          <ListItems />
+          <ListItems listType={ListType.Projects} />
         </div>
       </div>
       <div className="order-1 lg:order-2 lg:col-start-4 lg:col-end-10 col-span-full justify-center">
