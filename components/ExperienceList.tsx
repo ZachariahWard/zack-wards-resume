@@ -1,22 +1,39 @@
-"use client";
-import { IItemData, ItemType, Category } from "./listItems";
+import { IItemData, ItemType, Category } from "./ListItems";
+import { ProjectList, ProjectEnum } from "./ProjectList";
 
-export enum EducationEnum {
+export enum ExperienceEnum {
+  IntelliTect,
   EWU,
   SFCC,
   GED,
 }
 
-export function EducationList(): Array<IItemData> {
+export function ExperienceList(): Array<IItemData> {
+  const projectList = ProjectList();
+
   return [
     {
+      name: "Software Engineer Intern",
+      show: true,
+      type: ItemType.Job,
+      category: Category.WebDevelopment,
+      subItems: [
+        projectList[ProjectEnum.StormingTheCastle],
+        projectList[ProjectEnum.EssentialCSharp],
+        projectList[ProjectEnum.RandomInternTasks],
+      ],
+      startDate: new Date(2022, 9),
+      endDate: new Date(2023, 3),
+    },
+    {
       name: "Bachelors of Science in Computer Science",
+      show: true,
       type: ItemType.Education,
       category: Category.Other,
       description: [
         {
           type: ItemType.Description,
-          text: "I graduated from Eastern Washington University in the Summer of 2023.",
+          text: "I graduated Magna Cum Laude from Eastern Washington University in the Summer of 2023.",
         },
       ],
       startDate: new Date(2020, 11),
@@ -24,6 +41,7 @@ export function EducationList(): Array<IItemData> {
     },
     {
       name: "Associate of Sciences Transfer Degree Track 2",
+      show: false,
       type: ItemType.Education,
       category: Category.Other,
       description: [
@@ -37,6 +55,7 @@ export function EducationList(): Array<IItemData> {
     },
     {
       name: "General Education Diploma",
+      show: false,
       type: ItemType.Education,
       category: Category.Other,
       description: [

@@ -1,5 +1,5 @@
 "use client";
-import { IItemData, ItemType, Category } from "./listItems";
+import { IItemData, ItemType, Category } from "./ListItems";
 import { LinkList, LinkEnum } from "./LinkEnum";
 
 export enum ProjectEnum {
@@ -17,6 +17,7 @@ export function ProjectList(): Array<IItemData> {
   return [
     {
       name: "SudoSort",
+      show: true,
       type: ItemType.Project,
       category: Category.GeneralPurpose,
       description: [
@@ -30,6 +31,7 @@ export function ProjectList(): Array<IItemData> {
     },
     {
       name: "Resume Website",
+      show: true,
       type: ItemType.Project,
       category: Category.WebDevelopment,
       description: [
@@ -43,6 +45,7 @@ export function ProjectList(): Array<IItemData> {
     },
     {
       name: "Storming the Castle",
+      show: true,
       type: ItemType.Project,
       category: Category.WebDevelopment,
       description: [
@@ -57,6 +60,7 @@ export function ProjectList(): Array<IItemData> {
     },
     {
       name: "Essential C#",
+      show: true,
       type: ItemType.Project,
       category: Category.WebDevelopment,
       description: [
@@ -71,6 +75,7 @@ export function ProjectList(): Array<IItemData> {
     },
     {
       name: "Random Intern Tasks",
+      show: true,
       type: ItemType.Project,
       category: Category.Other,
       description: [
@@ -85,6 +90,7 @@ export function ProjectList(): Array<IItemData> {
     },
     {
       name: "Recipe Manager",
+      show: true,
       type: ItemType.Project,
       category: Category.WebDevelopment,
       description: [

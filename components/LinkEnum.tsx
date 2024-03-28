@@ -1,5 +1,4 @@
-"use client";
-import { ILink } from "./listItems";
+import { ILink } from "./ListItems";
 
 export enum LinkEnum {
   EssentialCSharp,

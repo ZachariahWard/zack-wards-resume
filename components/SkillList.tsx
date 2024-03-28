@@ -1,15 +1,16 @@
 "use client";
-import { IItemData, ItemType, Category } from "./listItems";
-import { EducationList, EducationEnum } from "./EducationList";
+import { IItemData, ItemType, Category } from "./ListItems";
 import { ProjectList, ProjectEnum } from "./ProjectList";
+import { ExperienceList, ExperienceEnum } from "./ExperienceList";
 
 export function SkillList(): Array<IItemData> {
   const projectList = ProjectList();
-  const educationList = EducationList();
+  const educationList = ExperienceList();
 
   return [
     {
       name: "C#",
+      show: true,
       type: ItemType.Language,
       category: Category.ASPNETCore,
       description: [
@@ -28,7 +29,8 @@ export function SkillList(): Array<IItemData> {
       frequency: 3,
     },
     {
-      name: "ASP.NET Core",
+      name: "ASP.NET",
+      show: true,
       type: ItemType.Language,
       category: Category.ASPNETCore,
       description: [
@@ -44,6 +46,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "JavaScript",
+      show: false,
       type: ItemType.Language,
       category: Category.WebDevelopment,
       description: [
@@ -57,6 +60,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "TypeScript",
+      show: false,
       type: ItemType.Language,
       category: Category.WebDevelopment,
       description: [
@@ -74,6 +78,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "Next.js",
+      show: true,
       type: ItemType.Framework,
       category: Category.WebDevelopment,
       subItems: [
@@ -85,7 +90,8 @@ export function SkillList(): Array<IItemData> {
       frequency: 4,
     },
     {
-      name: "Vue2.js",
+      name: "Vue",
+      show: true,
       type: ItemType.Framework,
       category: Category.WebDevelopment,
       description: [
@@ -98,6 +104,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "HTML",
+      show: false,
       type: ItemType.Language,
       category: Category.WebDevelopment,
       description: [
@@ -116,6 +123,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "CSS",
+      show: false,
       type: ItemType.Language,
       category: Category.WebDevelopment,
       description: [
@@ -132,7 +140,8 @@ export function SkillList(): Array<IItemData> {
       level: 2,
     },
     {
-      name: "Tailwind",
+      name: "TailwindCSS",
+      show: true,
       type: ItemType.Framework,
       category: Category.WebDevelopment,
       description: [
@@ -149,6 +158,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "Git",
+      show: false,
       type: ItemType.Tools,
       category: Category.VersionControl,
       description: [
@@ -167,6 +177,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "SQL",
+      show: false,
       type: ItemType.Language,
       category: Category.Database,
       description: [
@@ -180,6 +191,7 @@ export function SkillList(): Array<IItemData> {
     },
     {
       name: "Java",
+      show: false,
       type: ItemType.Language,
       category: Category.GeneralPurpose,
       description: [
@@ -188,7 +200,7 @@ export function SkillList(): Array<IItemData> {
           text: "I used Java in most of my programming classes at EWU.",
         },
       ],
-      subItems: [educationList[EducationEnum.EWU]],
+      subItems: [educationList[ExperienceEnum.EWU]],
       level: 3,
     },
   ];

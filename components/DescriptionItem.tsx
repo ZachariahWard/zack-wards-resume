@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { IDescription, ILink } from "./listItems";
+import { IDescription, ILink } from "./ListItems";
 
 export function DescriptionItem(description: IDescription) {
   const generateLinks = (text: string) => {
