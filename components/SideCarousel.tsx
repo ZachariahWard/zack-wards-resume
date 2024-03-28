@@ -42,7 +42,7 @@ function SideCarousel({ setIsOpen, isOpen }: SideCarouselProps) {
       leftControl
       rightControl
       pauseOnHover
-      className="rounded-r-[1000px]"
+      className="rounded-r-[1000px] h-screen min-h-[550px]"
       theme={sideCarouselTheme}
     >
       {
