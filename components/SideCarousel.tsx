@@ -87,7 +87,7 @@ function SideCarousel() {
             listTitles.map((title, index) => (
               <div key={title} className="px-10">
                 <div>{title}</div>
-                <ListItems title={title} slideIndex={index} />
+                <ListItems title={title} />
               </div>
             ))
           }
