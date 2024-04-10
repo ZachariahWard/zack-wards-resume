@@ -1,19 +1,12 @@
-"use client";
-
 import "./globals.css";
 import Image from "next/image";
 import profilePic from "@/public/smallProPic.jpg";
 import SideCarousel from "@/components/SideCarousel";
-import { useState } from "react";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <main className="grid grid-cols-12 bg-black text-white min-h-screen">
-      <div className="overflow-hidden order-2 lg:order-1 col-start-1 lg:col-end-4 col-end-11 min-h-fit bg-slate-900 rounded-r-[1000px] border-r-4 border-slate-700">
-        <SideCarousel setIsOpen={setIsOpen} isOpen={isOpen} />
-      </div>
+      <SideCarousel />
       <div className="order-1 lg:order-2 lg:col-start-4 lg:col-end-10 col-span-full justify-center">
         <h1 className="text-center text-6xl font-bold text-blue-400 py-3">
           Zack Ward

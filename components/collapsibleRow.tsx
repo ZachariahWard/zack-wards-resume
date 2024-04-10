@@ -1,64 +1,89 @@
 // CollapsibleRow.tsx
 "use client";
-import React, {
-  useState,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  useRef,
-} from "react";
+import { CarouselContext } from "./SideCarousel";
+import React, { useEffect, useRef, useContext } from "react";
 
 interface CollapsibleRowProps {
+  rowIndex: number;
+  parentIndex: number;
   title: string;
   children: React.ReactNode;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
 }
 
 const CollapsibleRow: React.FC<CollapsibleRowProps> = ({
+  rowIndex,
+  parentIndex,
   title,
   children,
-  setIsOpen,
-  isOpen,
 }) => {
-  const [isRowOpen, setRowIsOpen] = useState(false);
   const rowRef = useRef<HTMLDivElement>(null);
+  const { openTopIndex, setOpenTopIndex, openChildIndex, setOpenChildIndex } =
+    useContext(CarouselContext);
 
   const handleClick = () => {
-    // Close the current row if it's already open
-    if (isRowOpen) {
-      setRowIsOpen(false);
+    if (!parentIndex && rowIndex === openTopIndex) {
+      setOpenTopIndex(0);
+      setOpenChildIndex(0);
       return;
     }
-    setIsOpen(false);
-    setRowIsOpen(true);
+    if (parentIndex && rowIndex === openChildIndex) {
+      setOpenChildIndex(0);
+      return;
+    }
+    if (parentIndex) {
+      setOpenChildIndex(rowIndex);
+      return;
+    }
+    setOpenTopIndex(rowIndex);
   };
 
   useEffect(() => {
     const documentClick = (event: MouseEvent) => {
       if (!rowRef.current || rowRef.current.contains(event.target as Element))
         return;
-      setRowIsOpen(false); // Close if clicked outside the row or its ancestors
+      if (rowIndex === openTopIndex) {
+        setOpenTopIndex(0);
+        setOpenChildIndex(0);
+        return;
+      }
     };
 
     document.addEventListener("click", documentClick);
 
     return () => document.removeEventListener("click", documentClick);
-  }, []); // Empty dependency array to run effect only once
+  }, [
+    openChildIndex,
+    openTopIndex,
+    rowIndex,
+    setOpenChildIndex,
+    setOpenTopIndex,
+  ]);
+
+  const isOpen =
+    rowIndex ===
+    ((!parentIndex && openTopIndex) || (parentIndex && openChildIndex));
 
   return (
-    <div className="collapsible-row" ref={rowRef}>
+    <div
+      className={`collapsible-row transition-colors ease-in-out ${
+        parentIndex === openTopIndex ||
+        rowIndex === (openTopIndex || openChildIndex)
+          ? ""
+          : "text-slate-500 hover:text-white"
+      }`}
+      ref={rowRef}
+    >
       <div
-        className={`cursor-pointer p-2 hover:bg-gray-600 transition duration-1000 ease-in-out ${
-          isRowOpen ? "bg-gray-800" : ""
+        className={`cursor-pointer p-2 hover:bg-gray-600 transition duration-500 ease-in-out ${
+          isOpen ? "bg-gray-800" : ""
         }`}
         onClick={handleClick}
       >
         {title}
       </div>
       <div
-        className={`pt-2 transition-all overflow-hidden duration-1000 ease-in-out ${
-          isRowOpen
+        className={`pt-2 transition-all overflow-hidden duration-500 ease-in-out ${
+          isOpen
             ? "max-h-[500px] bg-slate-800 bg-opacity-60"
             : "max-h-0 color-transparent text-transparent invisible"
         }`}

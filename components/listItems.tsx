@@ -3,7 +3,6 @@ import { SkillList } from "./SkillList";
 import { ProjectList } from "./ProjectList";
 import { DescriptionItem } from "./DescriptionItem";
 import { ExperienceList } from "./ExperienceList";
-import { Dispatch, SetStateAction } from "react";
 import CollapsibleRow from "./CollapsibleRow";
 
 export enum ItemType {
@@ -57,8 +56,7 @@ export interface IItemData {
 export enum ListType {
   Skills,
   Projects,
-  Education,
-  Jobs,
+  Experience,
 }
 export const listTitles = ["Skills", "Projects", "Experience"];
 
@@ -68,7 +66,7 @@ function getListItems(listTitle: string): Array<IItemData> {
       return SkillList().filter((item) => item.show);
     case listTitles[ListType.Projects]:
       return ProjectList().filter((item) => item.show);
-    case listTitles[ListType.Education]:
+    case listTitles[ListType.Experience]:
       return ExperienceList().filter((item) => item.show);
     default:
       return [];
@@ -77,34 +75,19 @@ function getListItems(listTitle: string): Array<IItemData> {
 
 interface ListItemsProps {
   title: string;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
 }
 
-const ListItems: React.FC<ListItemsProps> = ({ title, setIsOpen, isOpen }) => {
+const ListItems: React.FC<ListItemsProps> = ({ title }) => {
   return (
     <div className="min-h-fit">
-      {getListItems(title).map((item) => (
-        <ListItem
-          key={item.name}
-          item={item}
-          setIsOpen={setIsOpen}
-          isOpen={isOpen}
-        />
+      {getListItems(title).map((item, index) => (
+        <ListItem key={item.name} item={item} level={0} index={index + 1} />
       ))}
     </div>
   );
 };
 
 export default ListItems;
-
-interface ListItemProps {
-  item: IItemData;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
-  level?: number;
-  index?: number;
-}
 
 const calculateTime = (startDate: Date, endDate = new Date()): string => {
   const timeDiffInMs = endDate.getTime() - startDate.getTime();
@@ -118,24 +101,31 @@ const calculateTime = (startDate: Date, endDate = new Date()): string => {
   );
 
   // Choose the most appropriate unit based on the calculated values
-  if (years > 1) return `Years: ${years}`;
-  if (months > 1) return `Months: ${months}`;
-  return `Days: ${days}`;
+  if (years > 1) return `${years} years`;
+  if (months > 1) return `${months} months`;
+  return `${days} days`;
 };
+
+interface ListItemProps {
+  item: IItemData;
+  isParentOpen?: boolean;
+  level: number;
+  index: number;
+  parentIndex?: number;
+}
 
 const ListItem: React.FC<ListItemProps> = ({
   item,
-  setIsOpen,
-  isOpen,
-  level = 0,
-  index = 0,
+  level,
+  index,
+  parentIndex = 0,
 }) => {
   return (
     <CollapsibleRow
+      rowIndex={index}
+      parentIndex={parentIndex}
       title={item.name}
       key={item.name + index}
-      setIsOpen={setIsOpen}
-      isOpen={isOpen}
     >
       <div
         className={`pl-4 ${
@@ -146,14 +136,13 @@ const ListItem: React.FC<ListItemProps> = ({
         {!!item.startDate && (
           <span>{calculateTime(item.startDate, item.endDate)}</span>
         )}
-        {item.subItems?.map((subItem) => (
+        {item.subItems?.map((subItem, subIndex) => (
           <ListItem
-            key={subItem.name + index}
+            key={subItem.name + subIndex + 1}
             item={subItem}
-            setIsOpen={setIsOpen}
-            isOpen={isOpen}
             level={level + 1}
-            index={++index}
+            parentIndex={index}
+            index={subIndex + 1}
           />
         ))}
       </div>

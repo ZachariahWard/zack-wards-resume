@@ -1,10 +1,11 @@
+"use client";
 import ListItems, { listTitles } from "./ListItems";
 import { Carousel, CustomFlowbiteTheme } from "flowbite-react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 
 const sideCarouselTheme: CustomFlowbiteTheme["carousel"] = {
   root: {
-    base: "relative h-full w-full rounded-r-[1000px]",
+    base: "relative h-full w-full",
   },
   indicators: {
     active: {
@@ -31,30 +32,68 @@ const sideCarouselTheme: CustomFlowbiteTheme["carousel"] = {
   },
 };
 
-interface SideCarouselProps {
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
+interface CarouselContextType {
+  openSlideIndex: number;
+  setOpenSlideIndex: Dispatch<SetStateAction<number>>;
+  openTopIndex: number;
+  setOpenTopIndex: Dispatch<SetStateAction<number>>;
+  openChildIndex: number;
+  setOpenChildIndex: Dispatch<SetStateAction<number>>;
 }
 
-function SideCarousel({ setIsOpen, isOpen }: SideCarouselProps) {
+export const CarouselContext = createContext<CarouselContextType>({
+  openSlideIndex: 0,
+  setOpenSlideIndex: () => {
+    throw new Error("CarouselContext missing");
+  },
+  openTopIndex: 0,
+  setOpenTopIndex: () => {
+    throw new Error("CarouselContext missing");
+  },
+  openChildIndex: 0,
+  setOpenChildIndex: () => {
+    throw new Error("CarouselContext missing");
+  },
+});
+
+function SideCarousel() {
+  const [openTopIndex, setOpenTopIndex] = useState(0);
+  const [openChildIndex, setOpenChildIndex] = useState(0);
+  const [openSlideIndex, setOpenSlideIndex] = useState(0);
+
   return (
-    <Carousel
-      leftControl
-      rightControl
-      pauseOnHover
-      className="rounded-r-[1000px] h-screen min-h-[550px]"
-      theme={sideCarouselTheme}
-    >
-      {
-        /* Side Carousel */
-        listTitles.map((title) => (
-          <div key={title} className="px-10">
-            <div>{title}</div>
-            <ListItems title={title} setIsOpen={setIsOpen} isOpen={isOpen} />
-          </div>
-        ))
-      }
-    </Carousel>
+    <div className="overflow-hidden order-2 lg:order-1 col-start-1 lg:col-end-4 col-end-12 p-0 min-h-fit bg-slate-900 lg:rounded-r-[1000px] rounded-[300px] border-x-4 border-slate-700">
+      <CarouselContext.Provider
+        value={{
+          openSlideIndex: openSlideIndex,
+          setOpenSlideIndex: setOpenSlideIndex,
+          openTopIndex: openTopIndex,
+          setOpenTopIndex: setOpenTopIndex,
+          openChildIndex: openChildIndex,
+          setOpenChildIndex: setOpenChildIndex,
+        }}
+      >
+        <Carousel
+          slide={!openTopIndex}
+          slideInterval={4000}
+          leftControl
+          rightControl
+          pauseOnHover
+          className="lg:rounded-r-[1000px] rounded-[300px] lg:p-4 p-10 h-screen min-h-[1000px]"
+          theme={sideCarouselTheme}
+        >
+          {
+            /* Side Carousel */
+            listTitles.map((title, index) => (
+              <div key={title} className="px-10">
+                <div>{title}</div>
+                <ListItems title={title} slideIndex={index} />
+              </div>
+            ))
+          }
+        </Carousel>
+      </CarouselContext.Provider>
+    </div>
   );
 }
 
