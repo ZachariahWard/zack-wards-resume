@@ -62,7 +62,7 @@ function SideCarousel() {
   const [openSlideIndex, setOpenSlideIndex] = useState(0);
 
   return (
-    <div className="overflow-hidden order-2 lg:order-1 col-start-2 lg:col-start-1 lg:col-end-4 col-end-12 p-0 min-h-fit bg-slate-900 lg:rounded-r-[1000px] rounded-[300px] border-x-4 border-slate-700">
+    <div className="overflow-hidden order-2 lg:order-1 lg:col-start-1 lg:col-end-4 col-span-full p-0 min-h-fit mx-6 my-2 lg:mx-1 bg-slate-900 lg:rounded-r-[1000px] rounded-[300px] border-x-4 border-slate-700">
       <CarouselContext.Provider
         value={{
           openSlideIndex: openSlideIndex,
