@@ -32,12 +32,10 @@ const CollapsibleListRow: React.FC<CollapsibleListRowProps> = ({
     }
     if (!!parentIndex && parentIndex === openTopIndex) {
       setOpenChildIndex(rowIndex);
-      console.log("open child: " + openChildIndex);
       return;
     }
     setOpenChildIndex(0);
     setOpenTopIndex(rowIndex);
-    console.log("open top: " + openTopIndex);
   };
 
   useEffect(() => {
