@@ -78,6 +78,7 @@ function SideCarousel() {
           slideInterval={4000}
           leftControl
           rightControl
+          draggable={false}
           pauseOnHover
           className="lg:rounded-r-[1000px] rounded-[300px] lg:p-4 p-10 h-screen min-h-[1000px]"
           theme={sideCarouselTheme}
@@ -86,7 +87,7 @@ function SideCarousel() {
             /* Side Carousel */
             carouselListTitles.map((title) => (
               <div key={title} className="px-10">
-                <div>{title}</div>
+                <h2>{title}</h2>
                 <CarouselListItems title={title} />
               </div>
             ))

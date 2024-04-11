@@ -60,14 +60,13 @@ const CollapsibleListRow: React.FC<CollapsibleListRowProps> = ({
   ]);
 
   const isOpen =
-    rowIndex ===
-    ((!parentIndex && openTopIndex) || (parentIndex && openChildIndex));
+    (!parentIndex && rowIndex === openTopIndex) ||
+    (!!parentIndex && rowIndex === openChildIndex);
 
   return (
     <div
       className={`collapsible-row transition-colors ease-in-out ${
-        parentIndex === openTopIndex ||
-        rowIndex === (openTopIndex || openChildIndex)
+        parentIndex === openTopIndex || isOpen
           ? ""
           : "text-slate-500 hover:text-white"
       }`}
