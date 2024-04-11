@@ -3,8 +3,8 @@ import { SkillList } from "./SkillList";
 import { ProjectList } from "./ProjectList";
 import { DescriptionItem } from "./DescriptionItem";
 import { ExperienceList } from "./ExperienceList";
-import CollapsibleRow from "./CollapsibleRow";
 import { ILink } from "./LinkEnum";
+import CollapsibleListRow from "./CollapsibleListRow";
 
 export enum ItemType {
   Language,
@@ -116,7 +116,7 @@ const ListItem: React.FC<ListItemProps> = ({
   parentIndex = 0,
 }) => {
   return (
-    <CollapsibleRow
+    <CollapsibleListRow
       rowIndex={index}
       parentIndex={parentIndex}
       title={item.name}
@@ -141,6 +141,6 @@ const ListItem: React.FC<ListItemProps> = ({
           />
         ))}
       </div>
-    </CollapsibleRow>
+    </CollapsibleListRow>
   );
 };

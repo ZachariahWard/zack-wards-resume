@@ -1,16 +1,16 @@
-// CollapsibleRow.tsx
+// CollapsibleListRow.tsx
 "use client";
 import { CarouselContext } from "./SideCarousel";
 import React, { useEffect, useRef, useContext } from "react";
 
-interface CollapsibleRowProps {
+interface CollapsibleListRowProps {
   rowIndex: number;
   parentIndex: number;
   title: string;
   children: React.ReactNode;
 }
 
-const CollapsibleRow: React.FC<CollapsibleRowProps> = ({
+const CollapsibleListRow: React.FC<CollapsibleListRowProps> = ({
   rowIndex,
   parentIndex,
   title,
@@ -94,4 +94,4 @@ const CollapsibleRow: React.FC<CollapsibleRowProps> = ({
   );
 };
 
-export default CollapsibleRow;
+export default CollapsibleListRow;
