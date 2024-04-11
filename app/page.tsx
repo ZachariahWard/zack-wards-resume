@@ -2,6 +2,8 @@ import "./globals.css";
 import Image from "next/image";
 import profilePic from "@/public/smallProPic.jpg";
 import SideCarousel from "@/components/SideCarousel";
+import Link from "next/link";
+import { Button } from "flowbite-react";
 
 export default function Home() {
   return (
@@ -21,19 +23,25 @@ export default function Home() {
         />
         <div className="col-start-2 col-end-5 justify-center bg-slate-900 rounded-full border-x-4 border-slate-700 px-12 py-9 m-5">
           <h2 className="text-center text-2xl mb-4 ">Software Engineer</h2>
-          <h3 className="text-center flex flex-row flex-wrap-reverse justify-around text-xl mb-4 px-12">
-            <a
+          <h3 className="text-center content-center flex flex-row flex-wrap-reverse justify-around text-xl mb-4 px-12">
+            <Link
               href="mailto:ZackWard.cs@gmail.com"
-              className="hover:text-slate-400 text-center pr-2"
+              className="hover:text-slate-400 text-center content-center pr-2"
             >
               ZackWard.cs@gmail.com
-            </a>
-            <a
+            </Link>
+            <Link
               href="tel:15097236395"
-              className="whitespace-nowrap hover:text-slate-400 text-center pr-2"
+              className="whitespace-nowrap hover:text-slate-400 text-center content-center pr-2"
             >
               (509) 723-6395
-            </a>
+            </Link>
+            <Link
+              href="https://drive.google.com/file/d/1Za2TNXbARlLpQe0r2hoFC2UWLSzY3DNv/view?usp=sharing"
+              className="whitespace-nowrap hover:text-slate-400 text-center content-center pr-2"
+            >
+              Resume PDF
+            </Link>
           </h3>
           <p className="flex-shrink w-auto mb-4">
             I am a full-time Christian, Dad, and Problem Solver. I am also a
@@ -48,6 +56,10 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <Link
+        href="https://drive.google.com/file/d/1Za2TNXbARlLpQe0r2hoFC2UWLSzY3DNv/view?usp=drive_link"
+        passHref
+      ></Link>
     </main>
   );
 }
