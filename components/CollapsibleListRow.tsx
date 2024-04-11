@@ -26,15 +26,18 @@ const CollapsibleListRow: React.FC<CollapsibleListRowProps> = ({
       setOpenChildIndex(0);
       return;
     }
-    if (parentIndex && rowIndex === openChildIndex) {
+    if (!!parentIndex && rowIndex === openChildIndex) {
       setOpenChildIndex(0);
       return;
     }
-    if (parentIndex) {
+    if (!!parentIndex && parentIndex === openTopIndex) {
       setOpenChildIndex(rowIndex);
+      console.log("open child: " + openChildIndex);
       return;
     }
+    setOpenChildIndex(0);
     setOpenTopIndex(rowIndex);
+    console.log("open top: " + openTopIndex);
   };
 
   useEffect(() => {
@@ -83,7 +86,7 @@ const CollapsibleListRow: React.FC<CollapsibleListRowProps> = ({
       <div
         className={`pt-2 transition-all overflow-hidden duration-500 ease-in-out ${
           isOpen
-            ? "max-h-[500px] bg-slate-800 bg-opacity-60"
+            ? "max-h-[500px] text-white bg-slate-800 bg-opacity-60"
             : "max-h-0 color-transparent text-transparent invisible"
         }`}
       >
