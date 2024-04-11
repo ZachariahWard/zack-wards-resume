@@ -1,4 +1,4 @@
-import { IItemData, ItemType, Category } from "./ListItems";
+import { IItemData, ItemType, Category } from "./CarouselListItems";
 import { ProjectList, ProjectEnum } from "./ProjectList";
 
 export enum ExperienceEnum {

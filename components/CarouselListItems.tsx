@@ -4,6 +4,7 @@ import { ProjectList } from "./ProjectList";
 import { DescriptionItem } from "./DescriptionItem";
 import { ExperienceList } from "./ExperienceList";
 import CollapsibleRow from "./CollapsibleRow";
+import { ILink } from "./LinkEnum";
 
 export enum ItemType {
   Language,
@@ -24,12 +25,6 @@ export enum Category {
   ASPNETCore,
   HardwareDescription,
   Other,
-}
-
-export interface ILink {
-  icon?: string;
-  text?: string;
-  url: string;
 }
 
 export interface IDescription {
@@ -58,36 +53,36 @@ export enum ListType {
   Projects,
   Experience,
 }
-export const listTitles = ["Skills", "Projects", "Experience"];
+export const carouselListTitles = ["Skills", "Projects", "Experience"];
 
-function getListItems(listTitle: string): Array<IItemData> {
+function getCarouselListItems(listTitle: string): Array<IItemData> {
   switch (listTitle) {
-    case listTitles[ListType.Skills]:
+    case carouselListTitles[ListType.Skills]:
       return SkillList().filter((item) => item.show);
-    case listTitles[ListType.Projects]:
+    case carouselListTitles[ListType.Projects]:
       return ProjectList().filter((item) => item.show);
-    case listTitles[ListType.Experience]:
+    case carouselListTitles[ListType.Experience]:
       return ExperienceList().filter((item) => item.show);
     default:
       return [];
   }
 }
 
-interface ListItemsProps {
+interface CarouselListItemsProps {
   title: string;
 }
 
-const ListItems: React.FC<ListItemsProps> = ({ title }) => {
+const CarouselListItems: React.FC<CarouselListItemsProps> = ({ title }) => {
   return (
     <div className="min-h-fit">
-      {getListItems(title).map((item, index) => (
+      {getCarouselListItems(title).map((item, index) => (
         <ListItem key={item.name} item={item} level={0} index={index + 1} />
       ))}
     </div>
   );
 };
 
-export default ListItems;
+export default CarouselListItems;
 
 const calculateTime = (startDate: Date, endDate = new Date()): string => {
   const timeDiffInMs = endDate.getTime() - startDate.getTime();

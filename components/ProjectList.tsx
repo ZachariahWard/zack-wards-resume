@@ -1,5 +1,5 @@
 "use client";
-import { IItemData, ItemType, Category } from "./ListItems";
+import { IItemData, ItemType, Category } from "./CarouselListItems";
 import { LinkList, LinkEnum } from "./LinkEnum";
 
 export enum ProjectEnum {

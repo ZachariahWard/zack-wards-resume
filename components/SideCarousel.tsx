@@ -1,7 +1,7 @@
 "use client";
-import ListItems, { listTitles } from "./ListItems";
 import { Carousel, CustomFlowbiteTheme } from "flowbite-react";
 import { Dispatch, SetStateAction, createContext, useState } from "react";
+import CarouselListItems, { carouselListTitles } from "./CarouselListItems";
 
 const sideCarouselTheme: CustomFlowbiteTheme["carousel"] = {
   root: {
@@ -84,10 +84,10 @@ function SideCarousel() {
         >
           {
             /* Side Carousel */
-            listTitles.map((title) => (
+            carouselListTitles.map((title) => (
               <div key={title} className="px-10">
                 <div>{title}</div>
-                <ListItems title={title} />
+                <CarouselListItems title={title} />
               </div>
             ))
           }

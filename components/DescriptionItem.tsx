@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { IDescription, ILink } from "./ListItems";
+import { IDescription } from "./CarouselListItems";
+import { ILink } from "./LinkEnum";
 
 export function DescriptionItem(description: IDescription) {
   const generateLinks = (text: string) => {

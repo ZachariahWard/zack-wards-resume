@@ -1,11 +1,15 @@
-import { ILink } from "./ListItems";
-
 export enum LinkEnum {
   EssentialCSharp,
   IntelliTect,
   SudoSort,
   ResumeWebsite,
   RecipeManager,
+}
+
+export interface ILink {
+  icon?: string;
+  text?: string;
+  url: string;
 }
 
 export function LinkList(): Array<ILink> {

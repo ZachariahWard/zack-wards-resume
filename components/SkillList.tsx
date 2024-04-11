@@ -1,5 +1,5 @@
 "use client";
-import { IItemData, ItemType, Category } from "./ListItems";
+import { IItemData, ItemType, Category } from "./CarouselListItems";
 import { ProjectList, ProjectEnum } from "./ProjectList";
 import { ExperienceList, ExperienceEnum } from "./ExperienceList";
 
